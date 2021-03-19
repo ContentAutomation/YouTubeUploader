@@ -1,0 +1,4 @@
+.idea/
+geckodriver.log
+login-cookies.json
+__pycache__/
