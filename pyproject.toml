@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "youtubeuploader"
-version = "0.1.0"
-description = ""
+version = "1.0"
+description = "An automated, headless YouTube Uploader"
 authors = ["Christian C., Moritz M., Luca S."]
 
 [tool.poetry.dependencies]
