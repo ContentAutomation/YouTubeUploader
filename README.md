@@ -21,14 +21,23 @@
         <a href="https://github.com/MorMund">Moritz M.</a>,
         <a href="https://github.com/lucaSchilling">Luca S. </a>
     </i>
+    <i><b>Related Projects</b>:
+        <a href="https://github.com/ContentAutomation/YouTubeWatcher">YouTube Watcher</a>,
+        <a href="https://github.com/ContentAutomation/TwitchCompilationCreator">Twitch Compilation Creator</a>,
+        <a href="https://github.com/ContentAutomation/NeuralNetworks">Neural Networks</a>
+    </i>
 </p>
 
 
 <hr />
 
-Searches YouTube, queries recommended videos and watches them. All fully automated and anonymised through the [Tor network](https://www.torproject.org/). The project consists of two independently usable components, the YouTube automation written in Python and the dockerized Tor Browser.
+## About
 
-**This project is for educational purposes only. Using Tor to watch YouTube videos is strongly discouraged, especially for Botting purposes. Please [inform yourself about the Tor network](https://2019.www.torproject.org/docs/faq.html.en), before using it extensively.**
+This project aims to automate the upload process for YouTube Videos. Since videos can only be publicly uploaded through the [YouTube Data API](https://developers.google.com/youtube/v3) by using a [Google Workspaces Account](https://workspace.google.com/) (not free!), we decided to create a headless uploader using [Selenium](https://www.selenium.dev/) and [Docker](https://www.docker.com/). This approach also bypasses API restrictions (e.g. Rate Limits/Endcards can't be set through the API).
+
+*Note: Because the upload process is often updated by Google, the code might not work when you try it! Often, there are only minor changes that have to be made. If you find yourself in this situation, please open an [Issue](https://github.com/ContentAutomation/YouTubeUploader/issues) or provide a quick fix in form of a [Pull Request](https://github.com/ContentAutomation/YouTubeUploader/pulls) to make sure that the codebase stays up to date!*
+
+**This project is for educational purposes only. Automating video uploads to YouTube with automation software might be against [YouTube's Terms of Service](https://www.youtube.com/static?template=terms). Even though our tests went smoothly, one might encounter problems when using the YouTube Uploader exensively.**
 
 ## Setup
 
