@@ -21,6 +21,7 @@
         <a href="https://github.com/MorMund">Moritz M.</a>,
         <a href="https://github.com/lucaSchilling">Luca S. </a>
     </i>
+    <br>
     <i><b>Related Projects</b>:
         <a href="https://github.com/ContentAutomation/YouTubeWatcher">YouTube Watcher</a>,
         <a href="https://github.com/ContentAutomation/TwitchCompilationCreator">Twitch Compilation Creator</a>,
