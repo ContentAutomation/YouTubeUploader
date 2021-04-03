@@ -67,14 +67,14 @@ def get_arg_parser() -> argparse.ArgumentParser:
         choices=["docker", "chrome", "firefox"],
         default="docker",
         type=str,
-        help="Select the driver/browser to use for executing the script.",
+        help="Select the driver/browser to use for executing the script (default: docker).",
     )
     parser.add_argument(
         "-l",
-        "--login-with-cookies",
+        "--login-cookies-path",
         dest="login_cookies",
         type=str,
-        help="A json file that contains the cookies required to sign into YouTube in the target browser",
+        help="A json file that contains the cookies required to sign into YouTube in the target browser.",
         required=True,
     )
     parser.add_argument(
@@ -85,6 +85,7 @@ def get_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--thumbnail-path",
         "-T",
+        help="Path to the thumbnail file (default: None).",
         dest="thumbnail",
         type=str,
         default=None,
@@ -93,21 +94,21 @@ def get_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-t",
         "--title",
-        help="This argument declares the title of the uploaded video",
+        help="This argument declares the title of the uploaded video.",
         type=str,
         required=True,
     )
     parser.add_argument(
         "-d",
         "--description",
-        help="This argument declares the description of the uploaded video",
+        help="This argument declares the description of the uploaded video.",
         type=str,
         required=True,
     )
     parser.add_argument(
         "-g",
         "--game",
-        help="This argument declares the game of the uploaded video",
+        help="This argument declares the game of the uploaded video (default: None).",
         default=None,
         required=False,
     )
