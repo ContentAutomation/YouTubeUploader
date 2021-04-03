@@ -38,7 +38,7 @@ This project aims to automate the upload process for YouTube Videos. Since video
 
 *Note: Because the upload process is often updated by Google, the code might not work when you try it! Often, there are only minor changes that have to be made. If you find yourself in this situation, please open an [Issue](https://github.com/ContentAutomation/YouTubeUploader/issues) or provide a quick fix in form of a [Pull Request](https://github.com/ContentAutomation/YouTubeUploader/pulls) to make sure that the codebase stays up to date!*
 
-**This project is for educational purposes only. Automating video uploads to YouTube with automation software might be against [YouTube's Terms of Service](https://www.youtube.com/static?template=terms). Even though our tests went smoothly, one might encounter problems when using the YouTube Uploader exensively.**
+**This project is for educational purposes only. Automating video uploads to YouTube with automation software might be against [YouTube's Terms of Service](https://www.youtube.com/static?template=terms). Even though our tests went smoothly, one might encounter problems when using the YouTube Uploader extensively.**
 
 ## Setup
 
