@@ -17,6 +17,7 @@ def upload_file(
         title: str,
         description: str,
         game: str,
+        kids: bool,
         upload_time: datetime,
         thumbnail_path: str = None,
 ):
@@ -28,7 +29,7 @@ def upload_file(
     video_input.send_keys(video_path)
 
     _set_basic_settings(driver, title, description, thumbnail_path)
-    _set_advanced_settings(driver, game)
+    _set_advanced_settings(driver, game, kids)
     # Go to visibility settings
     for i in range(2):
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
@@ -89,7 +90,7 @@ def _set_basic_settings(driver: WebDriver, title: str, description: str, thumbna
         thumbnail_input.send_keys(thumbnail_path)
 
 
-def _set_advanced_settings(driver: WebDriver, game_title: str):
+def _set_advanced_settings(driver: WebDriver, game_title: str, made_for_kids: bool):
     # Open advanced options
     driver.find_element_by_css_selector("#toggle-button").click()
     if game_title:
@@ -109,6 +110,10 @@ def _set_advanced_settings(driver: WebDriver, game_title: str):
                 )
             )
         ).click()
+
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(
+        (By.NAME, "MADE_FOR_KIDS" if made_for_kids else "NOT_MADE_FOR_KIDS")
+    )).click()
 
 
 def _set_endcard(driver: WebDriver):

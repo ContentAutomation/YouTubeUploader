@@ -51,6 +51,7 @@ def main():
             thumbnail_path=args.thumbnail,
             description=args.description,
             game=args.game,
+            kids=args.kids,
             upload_time=args.upload_time,
         )
     except:
@@ -111,6 +112,14 @@ def get_arg_parser() -> argparse.ArgumentParser:
         help="This argument declares the game of the uploaded video (default: None).",
         default=None,
         required=False,
+    )
+    parser.add_argument(
+        "-k",
+        "--kids",
+        help="Whether the video is made for kids or not. (default: False)",
+        required=False,
+        type=bool,
+        default=False,
     )
     parser.add_argument(
         "-ut",
