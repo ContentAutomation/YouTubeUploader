@@ -86,5 +86,28 @@ Make sure you have installed [Python](https://www.python.org/downloads/) 3.8 or 
 
 
 ## Run Parameters
-All of these parameters are optional and a default value will be used if they are not defined. 
 You can also get these definitions by running ```main.py --help```
+
+```
+usage: main.py [-h] [-B {docker,chrome,firefox}] -l LOGIN_COOKIES [--thumbnail-path THUMBNAIL] -t TITLE -d DESCRIPTION [-g GAME] [-k KIDS] [-ut UPLOAD_TIME] video_path
+
+positional arguments:
+  video_path            Path to the video file. When using docker, this path has to be inside the container (default mount is /uploads/).
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -B {docker,chrome,firefox}, --browser {docker,chrome,firefox}
+                        Select the driver/browser to use for executing the script (default: docker).
+  -l LOGIN_COOKIES, --login-cookies-path LOGIN_COOKIES
+                        A json file that contains the cookies required to sign into YouTube in the target browser.
+  --thumbnail-path THUMBNAIL, -T THUMBNAIL
+                        Path to the thumbnail file (default: None).
+  -t TITLE, --title TITLE
+                        This argument declares the title of the uploaded video.
+  -d DESCRIPTION, --description DESCRIPTION
+                        This argument declares the description of the uploaded video.
+  -g GAME, --game GAME  This argument declares the game of the uploaded video (default: None).
+  -k KIDS, --kids KIDS  Whether the video is made for kids or not. (default: False)
+  -ut UPLOAD_TIME, --upload_time UPLOAD_TIME
+                        This argument declares the scheduled upload time (UTC) of the uploaded video. (Example: 2021-04-04T20:00:00)
+```
