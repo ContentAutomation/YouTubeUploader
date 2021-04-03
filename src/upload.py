@@ -41,9 +41,11 @@ def upload_file(
     _set_endcard(driver)
 
     for _ in range(2):
-        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
-        # Sometimes, the done button is clickable but clicking it raises an error, so we add a "safety-sleep" here
+        # Sometimes, the button is clickable but clicking it raises an error, so we add a "safety-sleep" here
         sleep(5)
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
+
+    sleep(5)
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "done-button"))).click()
 
     # Wait for the dialog to disappear
