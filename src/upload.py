@@ -40,9 +40,10 @@ def upload_file(
     driver.find_element_by_css_selector("#step-badge-1").click()
     _set_endcard(driver)
 
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
-    # Sometimes, the done button is clickable but clicking it raises an error, so we add a "safety-sleep" here
-    sleep(5)
+    for _ in range(2):
+        WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
+        # Sometimes, the done button is clickable but clicking it raises an error, so we add a "safety-sleep" here
+        sleep(5)
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "done-button"))).click()
 
     # Wait for the dialog to disappear
@@ -53,7 +54,7 @@ def upload_file(
 def _wait_for_processing(driver):
     # Wait for processing to complete
     progress_label: WebElement = driver.find_element_by_css_selector("span.progress-label")
-    pattern = re.compile(r"(finished processing)|(processing hd.*)")
+    pattern = re.compile(r"(finished processing)|(processing hd.*)|(check.*)")
     current_progress = progress_label.get_attribute("textContent")
     last_progress = None
     while not pattern.match(current_progress.lower()):
@@ -134,7 +135,7 @@ def _set_time(driver: WebDriver, upload_time: datetime):
     # Open date_picker
     driver.find_element_by_css_selector("#datepicker-trigger > ytcp-dropdown-trigger:nth-child(1)").click()
 
-    date_input: WebElement = driver.find_element_by_css_selector("input.paper-input")
+    date_input: WebElement = driver.find_element_by_css_selector("input.tp-yt-paper-input")
     date_input.clear()
     # Transform date into required format: Mar 19, 2021
     date_input.send_keys(upload_time.strftime("%b %d, %Y"))
