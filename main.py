@@ -6,7 +6,6 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.remote.file_detector import LocalFileDetector
-from selenium.webdriver.remote.webdriver import WebDriver
 
 from src.login import confirm_logged_in, login_using_cookie_file
 from src.upload import upload_file
@@ -19,7 +18,6 @@ def main():
     parser = get_arg_parser()
     args = parser.parse_args()
 
-    driver: WebDriver = None
     if args.browser == "docker":
         driver = webdriver.Remote(
             command_executor="http://127.0.0.1:4444/wd/hub",
