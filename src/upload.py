@@ -100,15 +100,15 @@ def _set_advanced_settings(driver: WebDriver, game_title: str):
         )
         game_title_input.send_keys(game_title)
 
-    # Select first item in game drop down
-    WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable(
-            (
-                By.CSS_SELECTOR,
-                "#text-item-2",  # The first item is an empty item
+        # Select first item in game drop down
+        WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable(
+                (
+                    By.CSS_SELECTOR,
+                    "#text-item-2",  # The first item is an empty item
+                )
             )
-        )
-    ).click()
+        ).click()
 
 
 def _set_endcard(driver: WebDriver):
