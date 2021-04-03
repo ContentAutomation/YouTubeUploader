@@ -42,7 +42,31 @@ This project aims to automate the upload process for YouTube Videos. Since video
 
 ## Setup
 
-### YouTube automation
+### Dockerized Browser
+To run the uploader in a headless mode, it needs to connect to a docker container. To test the uploader locally without using docker, this section can be skipped. Otherwise, the docker container can be started by executing the following steps:
+1. Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/)
+
+*Note: On Windows and Mac, docker-compose is already installed when installing docker.*
+
+2. Clone/Download this repository
+3. Navigate to the root of the repository
+4. Run ```docker-compose up``` to start the docker container (append ```-d``` if you want to run it in a detached mode)
+
+*Note: Selenium can now connect to the browser via port 4444. In Python the connection can be established with the following command.*
+
+```python
+driver = webdriver.Remote(
+    command_executor="http://127.0.0.1:4444/wd/hub",
+    desired_capabilities=DesiredCapabilities.FIREFOX,
+)
+```
+
+*See `main.py` for more information.*
+    
+6. Continue with the [YouTube Uploader Setup](#setup-uploader)
+
+### <a name="setup-uploader"></a> YouTube Uploader!
+
 
 This project requires [Poetry](https://python-poetry.org/) to install the required dependencies.
 Check out [this link](https://python-poetry.org/docs/) to install Poetry on your operating system.
@@ -52,26 +76,14 @@ Make sure you have installed [Python](https://www.python.org/downloads/) 3.8 or 
 1. Clone/Download this repository
 2. Navigate to the root of the repository
 3. Run ```poetry install``` to create a virtual environment with Poetry
-4. Either run the dockerized Browser with `docker-compose up`, install [geckodriver](https://github.com/mozilla/geckodriver/releases) for a local Firefox or [ChromeDriver](https://chromedriver.chromium.org/downloads) for Chromium. Ensure that geckodriver/ChromeDriver are in a location in your `$PATH`.
-5. Run ```poetry run python main.py``` to run the program. Alternatively you can run ```poetry shell``` followed by ```python main.py```. By default this connects to the dockerized Browser. To automate a different Browser use the `--browser [chrome/firefox]` command line option.
+4. In a browser of your choice, login into the YouTube account that you want to use the uploader with
+5. Use a cookie extraction tool to extract the YouTube cookies into a JSON file (for example [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) [Chrome] or [Cookie Quick Manager](https://addons.mozilla.org/en-US/firefox/addon/cookie-quick-manager/) [Firefox])
 
-### Dockerized Tor Browser
+*Note: This is required so that the uploader is automatically logged in into the YouTube account using the cookies. Performing a Google login through automated software is extremely hard due to Google's bot detection/Login safety features*
 
-Running the Container requires [Docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/).
+7. Either run the dockerized Browser with `docker-compose up`, install [geckodriver](https://github.com/mozilla/geckodriver/releases) for a local Firefox or [ChromeDriver](https://chromedriver.chromium.org/downloads) for Chromium. Ensure that geckodriver/ChromeDriver are in a location in your `$PATH`.
+8. Run ```poetry run python main.py``` to run the program. Alternatively you can run ```poetry shell``` followed by ```python main.py```. By default this connects to the dockerized Firefox Browser (headless). To automate a different Browser (not-headless) use the `--browser [chrome/firefox]` command line option.
 
-1. Clone/Download this repository
-2. Navigate to the root of the repository
-3. Run `docker-compose up`. The image will be built automatically before startup.
-4. Selenium can now connect to the browser via port 4444. In Python the connection can be established with the following command.
-
-    ``` python
-    driver = webdriver.Remote(
-        command_executor="http://127.0.0.1:4444/wd/hub",
-        desired_capabilities=options,
-    )
-    ```
-
-    See `main.py` for more information.
 
 ## Run Parameters
 All of these parameters are optional and a default value will be used if they are not defined. 
