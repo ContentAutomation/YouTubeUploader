@@ -65,7 +65,7 @@ driver = webdriver.Remote(
     
 6. Continue with the [YouTube Uploader Setup](#setup-uploader)
 
-### <a name="setup-uploader"></a> YouTube Uploader!
+### <a name="setup-uploader"></a> YouTube Uploader
 
 
 This project requires [Poetry](https://python-poetry.org/) to install the required dependencies.
