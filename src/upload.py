@@ -31,7 +31,7 @@ def upload_file(
     _set_basic_settings(driver, title, description, thumbnail_path)
     _set_advanced_settings(driver, game, kids)
     # Go to visibility settings
-    for i in range(2):
+    for i in range(3):
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "next-button"))).click()
 
     _set_time(driver, upload_time)
@@ -129,7 +129,7 @@ def _set_endcard(driver: WebDriver):
 
 def _set_time(driver: WebDriver, upload_time: datetime):
     # Start time scheduling
-    driver.find_element_by_css_selector("#second-container > paper-radio-button:nth-child(1)").click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "SCHEDULE"))).click()
 
     # Open date_picker
     driver.find_element_by_css_selector("#datepicker-trigger > ytcp-dropdown-trigger:nth-child(1)").click()
