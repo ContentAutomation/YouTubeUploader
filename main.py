@@ -124,9 +124,10 @@ def get_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-ut",
         "--upload_time",
-        help="This argument declares the upload time of the uploaded video. Has to be a m",
+        help="This argument declares the scheduled upload time (UTC) of the uploaded video. "
+             "(Example: 2021-04-04T20:00:00)",
         required=False,
-        type=datetime,
+        type=datetime.fromisoformat,
         default=datetime(today.year, today.month, today.day, 20, 15),
     )
     return parser
