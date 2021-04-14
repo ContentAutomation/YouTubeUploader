@@ -1,0 +1,7 @@
+.idea/
+geckodriver.log
+login-cookies.json
+__pycache__/
+uploads/**/*
+!uploads/.gitkeep
+.DS_Store

@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "youtubeuploader"
+version = "1.0"
+description = "An automated, headless YouTube Uploader"
+authors = ["Christian C., Moritz M., Luca S."]
+
+[tool.poetry.dependencies]
+python = "~3.8"
+selenium = "^3.141.0"
+
+[tool.poetry.dev-dependencies]
+black = "20.8b1"
+pre-commit = "^2.11.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''

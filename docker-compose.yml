@@ -1,0 +1,12 @@
+version: '2'
+services:
+    firefox:
+        # Use the official standalone selenium image for Firefox
+        image: selenium/standalone-firefox
+        # Mounting /dev/shm is a workaround for browser crashes inside docker. See https://github.com/SeleniumHQ/docker-selenium#quick-start
+        volumes:
+            - /dev/shm:/dev/shm
+            - ./uploads/:/uploads/:ro
+        # Selenium port we connect to from python
+        ports:
+            - "4444:4444"
