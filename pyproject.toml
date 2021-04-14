@@ -5,7 +5,7 @@ description = "An automated, headless YouTube Uploader"
 authors = ["Christian C., Moritz M., Luca S."]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "~3.8"
 selenium = "^3.141.0"
 
 [tool.poetry.dev-dependencies]
