@@ -84,6 +84,7 @@ Make sure you have installed [Python](https://www.python.org/downloads/) 3.8 or 
 7. Either run the dockerized Browser with `docker-compose up`, install [geckodriver](https://github.com/mozilla/geckodriver/releases) for a local Firefox or [ChromeDriver](https://chromedriver.chromium.org/downloads) for Chromium. Ensure that geckodriver/ChromeDriver are in a location in your `$PATH`.
 8. Run ```poetry run python main.py``` to run the program. Alternatively you can run ```poetry shell``` followed by ```python main.py```. By default this connects to the dockerized Firefox Browser (headless). To automate a different Browser (not-headless) use the `--browser [chrome/firefox]` command line option.
 
+*Note: When using Docker, the video that should be uploaded needs to be in the repository's ```uploads``` folder. This is because ```REPOSITORY_ROOT/uploads/``` is mounted to ```/uploads/``` in the Docker container. Therefore, the ```video_path``` argument has to be passed in the following format: ```/uploads/VIDEO_FILE_NAME.xxx```*
 
 ## Run Parameters
 You can also get these definitions by running ```main.py --help```
