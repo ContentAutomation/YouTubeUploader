@@ -23,7 +23,7 @@ def upload_file(
 ):
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "ytcp-button#create-icon"))).click()
     WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.XPATH, '//paper-item[@test-id="upload-beta"]'))
+        EC.element_to_be_clickable((By.XPATH, '//tp-yt-paper-item[@test-id="upload-beta"]'))
     ).click()
     video_input = driver.find_element_by_xpath('//input[@type="file"]')
     video_input.send_keys(video_path)
@@ -148,7 +148,7 @@ def _set_time(driver: WebDriver, upload_time: datetime):
         "#time-of-day-trigger > ytcp-dropdown-trigger:nth-child(1) > div:nth-child(2)"
     ).click()
 
-    time_list = driver.find_elements_by_css_selector("paper-item.paper-item")
+    time_list = driver.find_elements_by_css_selector("tp-yt-paper-item.tp-yt-paper-item")
     # Transform time into required format: 8:15 PM
     time_str = upload_time.strftime("%I:%M %p").strip("0")
     time = [time for time in time_list[2:] if time.text == time_str][0]
