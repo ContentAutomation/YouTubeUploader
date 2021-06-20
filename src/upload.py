@@ -9,6 +9,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 
 
 def upload_file(
@@ -124,8 +125,14 @@ def _set_endcard(driver: WebDriver):
     driver.find_element_by_css_selector("#endscreens-button").click()
     sleep(5)
 
-    # Select endcard type from last video or first suggestion if no prev. video
-    driver.find_element_by_css_selector("div.card:nth-child(1)").click()
+    for i in range(1, 11):
+        try:
+            # Select endcard type from last video or first suggestion if no prev. video
+            driver.find_element_by_css_selector("div.card:nth-child(1)").click()
+            break
+        except (NoSuchElementException, ElementNotInteractableException):
+            logging.warning(f"Couldn't find endcard button. Retry in 5s! ({i}/10)")
+            sleep(5)
 
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "save-button"))).click()
 
