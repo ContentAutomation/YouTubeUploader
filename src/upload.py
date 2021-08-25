@@ -116,7 +116,7 @@ def _set_advanced_settings(driver: WebDriver, game_title: str, made_for_kids: bo
         ).click()
 
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable(
-        (By.NAME, "MADE_FOR_KIDS" if made_for_kids else "NOT_MADE_FOR_KIDS")
+        (By.NAME, "VIDEO_MADE_FOR_KIDS_MFK" if made_for_kids else "VIDEO_MADE_FOR_KIDS_NOT_MFK")
     )).click()
 
 
